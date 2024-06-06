@@ -11,7 +11,7 @@ async function fetchGitData(username) {
   try {
     let data = await window.fetch(`https://api.github.com/users/${username}`);
     console.log(data);
-    console.log((data.type));
+    console.log(data.type);
     let finalData = await data.json();
     let mainRight = document.getElementById("main-right");
     let {
@@ -46,12 +46,12 @@ async function fetchGitData(username) {
           <h1 id="follow"><span id="followers" class="space">${followers}</span><span id="following" class="space">${following}</span></h1>
           <h3 id="username" class="space">${login}</h3>
           <h3 id="account"><span id="created-at" class="space">${created_at.slice(
-      0,
-      10
-    )}</span> <span id="updated-at" class="space">${updated_at.slice(
-      0,
-      10
-    )}</span></h3>
+            0,
+            10,
+          )}</span> <span id="updated-at" class="space">${updated_at.slice(
+            0,
+            10,
+          )}</span></h3>
           <h3 id="email" class="space">${email}</h3>
           <h3 id="bio" class="space">${bio}<span id="repo" class="space public">${public_repos}</span> <span id="gist" class="space public">${public_gists}</span></h3>
           <h3 id="location" class="space">${location}</h3>
@@ -61,20 +61,20 @@ async function fetchGitData(username) {
 
         <div id="social-handel">
           <div class="social">
-            <a href=${blog} id="blog-site" target="_blank">
-              <button>Blog Site</button>
+            <a href="http://${blog}" id="blog-site" target="_blank">
+              <button class="cursor-type">Blog Site</button>
             </a>
-            <a href=${url} id="json-data" target="_blank">
-              <button>JSON Data</button>
+            <a class="cursor-type" href=${url} id="json-data" target="_blank">
+              <button class="cursor-type">JSON Data</button>
             </a>
           </div>
 
           <div class="social">
-            <a href=${twitter_username} id="twitter-account" target="_blank">
-              <button><i class="bi bi-twitter"></i></button>
+            <a href="http://x.com/${twitter_username}" id="twitter-account" target="_blank">
+              <button class="cursor-type"><i class="bi bi-twitter"></i></button>
             </a>
             <a href=${html_url} id="github-account" target="_blank">
-              <button><i class="bi bi-github"></i></button>
+              <button class="cursor-type"><i class="bi bi-github"></i></button>
             </a>
           </div>
         </div>
