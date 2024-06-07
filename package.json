@@ -17,5 +17,8 @@
     "eslint": "^8.57.0",
     "parcel-bundler": "^1.12.4",
     "prettier": "^3.2.5"
+  },
+  "dependencies": {
+    "nprogress": "^0.2.0"
   }
 }
