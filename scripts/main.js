@@ -1,18 +1,30 @@
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
+
 let form = document.querySelector(".form-control");
 let username = document.querySelector("#username");
+const emptyInput = document.querySelector("#username");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let value = username.value;
   fetchGitData(value).then(() => console.log("Data Fetched"));
+  emptyInput.value = "";
 });
 
+//Disable the NProgress spinner
+NProgress.configure({ showSpinner: false });
+//Start the progress bar
+NProgress.start();
+
+//API Call
 async function fetchGitData(username) {
   try {
     let data = await window.fetch(`https://api.github.com/users/${username}`);
     console.log(data);
     console.log(data.type);
     let finalData = await data.json();
+    console.log(finalData);
     let mainRight = document.getElementById("main-right");
     let {
       avatar_url,
@@ -83,3 +95,5 @@ async function fetchGitData(username) {
     console.log(error);
   }
 }
+//Stop the progress bar
+NProgress.done();

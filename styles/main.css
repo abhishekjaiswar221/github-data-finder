@@ -543,3 +543,7 @@ body {
 .cursor-type {
   cursor: pointer;
 }
+.bar {
+  background: #6e40c9 !important;
+  height: 0.14rem !important;
+}
