@@ -1,52 +1,60 @@
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 
-let form = document.querySelector(".form-control");
-let username = document.querySelector("#username");
-const emptyInput = document.querySelector("#username");
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  let value = username.value;
-  fetchGitData(value).then(() => console.log("Data Fetched"));
-  emptyInput.value = "";
-});
-
 //Disable the NProgress spinner
 NProgress.configure({ showSpinner: false });
 //Start the progress bar
 NProgress.start();
+//Set the progress bar to 50%
+NProgress.set(0.5);
 
-//API Call
-async function fetchGitData(username) {
-  try {
-    let data = await window.fetch(`https://api.github.com/users/${username}`);
-    console.log(data);
-    console.log(data.type);
-    let finalData = await data.json();
-    console.log(finalData);
-    let mainRight = document.getElementById("main-right");
-    let {
-      avatar_url,
-      name,
-      login,
-      bio,
-      company,
-      blog,
-      followers,
-      following,
-      created_at,
-      updated_at,
-      public_repos,
-      public_gists,
-      hireable,
-      location,
-      email,
-      twitter_username,
-      url,
-      html_url,
-    } = finalData;
-    mainRight.innerHTML = `
+document.addEventListener("DOMContentLoaded", () => {
+  // Set the progress bar to 80%
+  NProgress.set(0.8);
+  setTimeout(() => {
+    let form = document.querySelector(".form-control");
+    let username = document.querySelector("#username");
+    const emptyInput = document.querySelector("#username");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      let value = username.value;
+      fetchGitData(value).then(() => console.log("Data Fetched"));
+      emptyInput.value = "";
+    });
+
+    //API Call
+    async function fetchGitData(username) {
+      try {
+        let data = await window.fetch(
+          `https://api.github.com/users/${username}`,
+        );
+        console.log(data);
+        console.log(data.type);
+        let finalData = await data.json();
+        console.log(finalData);
+        let mainRight = document.getElementById("main-right");
+        let {
+          avatar_url,
+          name,
+          login,
+          bio,
+          company,
+          blog,
+          followers,
+          following,
+          created_at,
+          updated_at,
+          public_repos,
+          public_gists,
+          hireable,
+          location,
+          email,
+          twitter_username,
+          url,
+          html_url,
+        } = finalData;
+        mainRight.innerHTML = `
        <div id="profile-photo">
           <picture>
             <img src=${avatar_url} alt="Profile Photo">
@@ -91,9 +99,13 @@ async function fetchGitData(username) {
           </div>
         </div>
       `;
-  } catch (error) {
-    console.log(error);
-  }
-}
-//Stop the progress bar
-NProgress.done();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }, 2000);
+  //Set the progress bar to 90%
+  NProgress.set(0.9);
+  //Stop the progress bar
+  NProgress.done();
+});
