@@ -323,7 +323,7 @@ body {
   flex-basis: 50%;
 }
 
-.form-control {
+form {
   display: flex;
   flex-direction: column;
   align-items: center;
