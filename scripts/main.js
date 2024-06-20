@@ -12,15 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Set the progress bar to 80%
   NProgress.set(0.8);
   setTimeout(() => {
-    let form = document.querySelector(".form-control");
+    let form = document.querySelector("form");
     let username = document.querySelector("#username");
-    const emptyInput = document.querySelector("#username");
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       let value = username.value;
       fetchGitData(value).then(() => console.log("Data Fetched"));
-      emptyInput.value = "";
+      username.value = "";
     });
 
     //API Call
@@ -103,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(error);
       }
     }
-  }, 2000);
+  }, 1000);
   //Set the progress bar to 90%
   NProgress.set(0.9);
   //Stop the progress bar
