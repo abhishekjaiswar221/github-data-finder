@@ -1,6 +1,6 @@
 {
-  "short_name": "",
-  "name": "",
+  "short_name": "GitHub Finder",
+  "name": "GitHub Data Finder",
   "icons": [
     {
       "src": "icon.png",
