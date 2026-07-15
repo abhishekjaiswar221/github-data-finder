@@ -250,13 +250,19 @@ a {
   padding: var(--space-7) var(--space-4);
 }
 
-/* The result state holds full-width content (profile card, repo grid),
-   unlike the centered icon+message layout the other states share. */
-.state-result {
+/* The result and loading states hold full-width content (profile card,
+   repo grid / skeletons), unlike the centered icon+message layout the
+   other states share. */
+.state-result,
+.state-loading {
   align-items: stretch;
   text-align: left;
   padding: 0;
   gap: 0;
+}
+
+.state-loading {
+  gap: var(--space-5);
 }
 
 .state-icon {
